@@ -1,0 +1,41 @@
+微社区开发：
+
+nodes name:string{100} order_id:integer topics_number:integer
+
+topics title:string{200} content:text user_id:integer node_id:integer
+
+replies content:text user_id:integer topic_id:integer deleted_tag:boolean
+
+users nickname:string{200} avatar:string{200} sex:integer email:string{200}
+
+
+
+
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
