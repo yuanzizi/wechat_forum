@@ -1,40 +1,46 @@
-<p id="notice"><%= notice %></p>
+        <div class="header">
+            <%= link_to new_topic_path(), class: "email" do %>
+              <%= image_tag "mobile_app/email.png", alt: "新建主题" %>
+            <% end -%>
+            <%= link_to node_path(@topic.node), :class=>"return" do %>
+              <%= image_tag "mobile_app/return.png", alt: "后退" %>
+            <% end -%>
+            <div class="header-ttl"><%= @topic.content.truncate(20)%></div>
+        </div>
 
-<p>
-  <strong>标题:</strong>
-  <%= @topic.title %>
-</p>
 
-<p>
-  <strong>内容:</strong>
-  <%= @topic.content %>
-</p>
 
-<p>
-  <strong>楼主:</strong>
-  <%= @topic.user.nickname %>
-</p>
+        <div class="user" style="width:94%;">
+          <%= image_tag "mobile_app/avatar.png", alt: "默认头像", class: "user_avatar pull-left" %>
+          <h5><%= @topic.user.nickname %></h5>
+          <small><%= @topic.updated_at.to_i %></small>
 
-<p>
-  <strong>版块:</strong>
-  <%= @topic.node.name %>
-</p>
+        </div>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to '返回版块', node_path(@topic.node) %>
-<hr />
-<%= paginate @replies %>
-<ul>
-<% @replies.each do |reply| %>
-  <li>
-    <strong><%= reply.user.try :nickname %></strong>
-    <%= reply.content %>
-  </li>
-<% end %>
-</ul>
-<%= paginate @replies %>
+        <div class="recipes-info-txt">
+            <%= sanitize @topic.content -%>
+        </div>
+        
+        <div class="reply_num">
+          <strong><%= @topic.replies.count %></strong>&nbsp;条回复
+        </div>
 
+        <% @topic.replies.order("updated_at desc").each do |reply| %>
+        <div class="topic_replies">
+            <strong class="username"><%= reply.user.nickname %></strong>
+            <div class="topic_replies_txt">
+              <%= sanitize reply.content %>
+            </div>
+
+            <p class="topic_replies_time">
+              <%= reply.updated_at.to_i %>
+            </p>
+        </div>
+        <% end %>
 <%= render "/topics/reply_form" %>
 
 
-<br />  <br />  <br />  <br />
+
+
+
+

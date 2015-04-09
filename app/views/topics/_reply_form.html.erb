@@ -1,19 +1,25 @@
-<% if @reply.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
 
-    <ul>
-    <% @reply.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for @reply do |f| -%>
-  <%= f.text_area :content, rows: 10, cols: 50 %>
-  <%#= f.hidden_field :user_id %>
-  <%= f.hidden_field :topic_id %>
-  <br />
-  <%= f.submit "回帖" %>
-<% end -%>
+        <div class="topic_replies">
+          <h5>添加评论</h5>
+          <% unless current_user %>
+          <div class="session_error"> 您未登陆，请 <%=link_to "登陆", sessions_new_path()%></div>
+          <% else %>
+            <%= form_for(@reply, url: replies_path(@topic, @reply, anchor: "error"), method: :post ) do |f| %>
+            <%#= form_for([@topic, @reply]) do |f| %>
+                <% if @reply.errors.any? %>
+                <a href="" name="error"></a>
+                <div id="error_explanation">
+                  <ul>
+                  <% @reply.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                <%= f.text_area :content , class: "replies_textarea", placeholder: "内容" %>
+                <%= f.submit "发表", class: "replies_btn" %>
+                <%= f.hidden_field :topic_id %>
+                
+            <% end %>
+          <% end %>
+        </div>

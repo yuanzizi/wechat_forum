@@ -43,4 +43,25 @@ gem 'kaminari'
 
 gem 'seed-fu', '~> 2.3'
 
+gem 'compass-rails'
+gem "susy"
+gem "sass-960gs"
+gem 'font-awesome-sass'
+gem 'sass-buttons'
+
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'simple_form'
+
+# for user regist and oauth
+gem "omniauth"
+gem 'omniauth-identity'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-qzone'
+
+gem 'gitlab'
+
+gem 'mini_magick'
+gem "carrierwave"
+
 
