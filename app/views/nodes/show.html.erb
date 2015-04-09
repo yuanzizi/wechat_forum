@@ -17,3 +17,24 @@
 
 <%= link_to 'Edit', edit_node_path(@node) %> |
 <%= link_to 'Back', nodes_path %>
+
+<hr />
+<%= paginate @topics %>
+
+<ul>
+<% @topics.each do |topic| %>
+  <li>
+    <%= topic.title %> <br />
+    <%= topic.content %> <br />
+    <%= topic.user.try :name %> <br />
+    <%= topic.updated_at %>
+  </li>
+<% end %>
+</ul>
+
+<%= paginate @topics %>
+<br />
+
+
+
+
