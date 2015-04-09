@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>标题:</strong>
   <%= @topic.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>内容:</strong>
   <%= @topic.content %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @topic.user_id %>
+  <strong>楼主:</strong>
+  <%= @topic.user.nickname %>
 </p>
 
 <p>
-  <strong>Node:</strong>
-  <%= @topic.node_id %>
+  <strong>版块:</strong>
+  <%= @topic.node.name %>
 </p>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to '返回版块', node_path(@topic.node) %>
+<hr />
+<%= paginate @replies %>
+<ul>
+<% @replies.each do |reply| %>
+  <li>
+    <%= reply.content %>
+  </li>
+<% end %>
+</ul>
+<%= paginate @replies %>
+

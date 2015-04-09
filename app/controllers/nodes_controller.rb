@@ -10,7 +10,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
-    @topics = @node.topics.page params[:page]
+    @topics = @node.topics.order("updated_at desc").page params[:page]
   end
 
   # GET /nodes/new

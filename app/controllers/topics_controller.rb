@@ -10,11 +10,12 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @replies = @topic.replies.order("id").page params[:id]
   end
 
   # GET /topics/new
   def new
-    @topic = Topic.new
+    @topic = Topic.new(node_id: params[:node_id], user_id: current_user.id)
   end
 
   # GET /topics/1/edit

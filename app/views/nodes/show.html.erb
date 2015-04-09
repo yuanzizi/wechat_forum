@@ -15,7 +15,9 @@
   <%= @node.topics_number %>
 </p>
 
-<%= link_to 'Edit', edit_node_path(@node) %> |
+<%#= link_to 'Edit', edit_node_path(@node) %>
+<%= link_to "发帖", new_topic_path( node_id: @node.id ) %>
+|
 <%= link_to 'Back', nodes_path %>
 
 <hr />
@@ -24,10 +26,10 @@
 <ul>
 <% @topics.each do |topic| %>
   <li>
-    <%= topic.title %> <br />
+    <%= link_to topic.title, topic_path(topic) %> <br />
     <%= topic.content %> <br />
-    <%= topic.user.try :name %> <br />
-    <%= topic.updated_at %>
+    <%= topic.user.try :nickname %> <br />
+    <%= topic.updated_at.to_s(:date) %>
   </li>
 <% end %>
 </ul>
