@@ -27,9 +27,14 @@
 <ul>
 <% @replies.each do |reply| %>
   <li>
+    <strong><%= reply.user.try :nickname %></strong>
     <%= reply.content %>
   </li>
 <% end %>
 </ul>
 <%= paginate @replies %>
 
+<%= render "/topics/reply_form" %>
+
+
+<br />  <br />  <br />  <br />

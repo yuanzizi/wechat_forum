@@ -10,7 +10,11 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @replies = @topic.replies.order("id").page params[:id]
+    @replies = @topic.replies.order("id desc").page(params[:page]).per(25)
+    @reply = Reply.new do |r|
+      r.topic_id = @topic.id
+      r.user_id = current_user.id
+    end
   end
 
   # GET /topics/new
