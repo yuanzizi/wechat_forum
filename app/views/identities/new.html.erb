@@ -1,0 +1,23 @@
+        <style type="text/css">
+            body{background:#f1edea;}
+        </style>
+      
+        
+        <%= form_tag "/auth/identity/register", class: "form-login" do %>
+          <% if @identity && @identity.errors.any? %>  
+            <div class="error_messages">  
+              <h2><%= pluralize(@identity.errors.count, "error") %> :</h2>  
+              <ul>  
+              <% @identity.errors.full_messages.each do |msg| %>  
+                <li><%= msg %></li>  
+              <% end %>  
+              </ul>  
+            </div>  
+          <% end %> 
+            <%= text_field_tag :name, @identity.try(:name), class: "input-text", placeholder: "用户名" %>
+            <%= text_field_tag :email, @identity.try(:email), class: "input-text", placeholder: "用户邮箱"  %>
+            <%= password_field_tag :password,"", class: "input-text" , placeholder: "密码" %>
+            <%= password_field_tag :password_confirmation, "", class: "input-text" , placeholder: "确认密码" %>
+            <%= link_to "已有帐号，马上登陆", sessions_new_path(), class: "reg"%>
+          <span class="btn"><%= submit_tag "注册" %></span>
+        <% end %>

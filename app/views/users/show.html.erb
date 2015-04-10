@@ -20,5 +20,8 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '编辑个人信息', edit_user_path(@user) %> |
+<%= link_to '返回首页', nodes_path %>
+
+<%= link_to "退出登录", logout_path %>
+

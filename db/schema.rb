@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409024942) do
+ActiveRecord::Schema.define(version: 20150410025743) do
+
+  create_table "identities", force: true do |t|
+    t.string   "name",            limit: 100
+    t.string   "email",           limit: 100
+    t.string   "password_digest", limit: 200
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "nodes", force: true do |t|
     t.string   "name",          limit: 100
@@ -46,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150409024942) do
     t.string   "email",      limit: 200
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
 end

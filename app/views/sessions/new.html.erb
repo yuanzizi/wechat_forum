@@ -1,0 +1,23 @@
+        <style type="text/css">
+            body{background:#f1edea;}
+        </style>
+        
+        <div class="third">
+            <%= link_to "/auth/qzone" do %>
+              <%= image_tag "mobile_app/qq.jpg", alt: "QQ账号" %><br>QQ账号
+            <% end -%>
+            <a href="#"><%= image_tag "mobile_app/wx.jpg", alt: "微信账号" %><br>微信账号</a>
+            <a href="#"><%= image_tag "mobile_app/wb.jpg", alt: "微博账号" %><br>微博账号</a>
+        </div>
+        <% if flash[:notice] %>
+         <%= flash[:notice] %>
+
+        <% end %>
+        <div class="or"><span><em>或</em></span></div>
+        <%= form_tag "/auth/identity/callback", class: "form-login" do %>
+            <%= text_field_tag :auth_key, "", class: "input-text", placeholder: "邮箱"%>  
+            <%= password_field_tag :password ,"", class: "input-text", placeholder: "密码"%>
+            <a href="#" class="forget-pwd text-right">忘记密码</a>
+            <span class="btn"><%= submit_tag "登录", class: "btn" %></span>
+            <%= link_to "手机号注册", new_identity_path(), class: "reg"%>
+        <% end %>

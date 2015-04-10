@@ -58,6 +58,7 @@ gem 'omniauth-identity'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-qzone'
 
+
 gem 'gitlab'
 
 gem 'mini_magick'
